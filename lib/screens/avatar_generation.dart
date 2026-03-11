@@ -276,3 +276,4 @@ class _AvatarGenerationScreenState extends State<AvatarGenerationScreen> {
     );
   }
 }
+

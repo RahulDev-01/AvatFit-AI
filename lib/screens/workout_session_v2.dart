@@ -252,7 +252,7 @@ class WorkoutSessionV2Screen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildNavItem(icon: Icons.fitness_center, isSelected: true),
-            _buildNavItem(icon: Icons.monitoring, isSelected: false),
+            _buildNavItem(icon: Icons.show_chart, isSelected: false),
             _buildNavItem(icon: Icons.group, isSelected: false),
             _buildNavItem(icon: Icons.person, isSelected: false),
           ],
@@ -331,3 +331,4 @@ class WorkoutSessionV2Screen extends StatelessWidget {
     );
   }
 }
+

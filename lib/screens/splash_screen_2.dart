@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
 
@@ -47,7 +50,7 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
     _progressController.forward().then((_) {
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
-          // context.go(AppRoutes.splash3);
+          context.go(AppRoutes.splash3);
         }
       });
     });
@@ -471,12 +474,12 @@ class DashedRingPainter extends CustomPainter {
     final dashWidth = isDotted ? 2.0 : 8.0;
     final dashSpace = isDotted ? 4.0 : 6.0;
     
-    PathMetrics pathMetrics = path.computeMetrics();
-    for (PathMetric pathMetric in pathMetrics) {
+    final ui.PathMetrics pathMetrics = path.computeMetrics();
+    for (final ui.PathMetric pathMetric in pathMetrics) {
       double distance = 0;
       while (distance < pathMetric.length) {
         canvas.drawPath(
-          pathMetric.extractPath(distance, distance + dashWidth), 
+          pathMetric.extractPath(distance, distance + dashWidth),
           paint
         );
         distance += dashWidth + dashSpace;
@@ -544,3 +547,6 @@ class HexagonLinesPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
+
+
+

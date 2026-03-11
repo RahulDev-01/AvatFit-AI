@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
@@ -33,8 +34,8 @@ class _SplashScreen1State extends State<SplashScreen1> with SingleTickerProvider
       // Navigate to the next screen after the animation
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
-          // Placeholder navigation to Onboarding 1
-          // context.go(AppRoutes.onboarding1);
+          // Navigate to next splash screen
+          context.go(AppRoutes.splash2);
         }
       });
     });
@@ -318,3 +319,5 @@ class _SplashScreen1State extends State<SplashScreen1> with SingleTickerProvider
     );
   }
 }
+
+

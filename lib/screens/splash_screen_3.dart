@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:math' as math;
 import '../theme/app_colors.dart';
@@ -33,7 +34,7 @@ class _SplashScreen3State extends State<SplashScreen3> with SingleTickerProvider
     _progressController.forward().then((_) {
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
-          // context.go(AppRoutes.onboarding1);
+          context.go(AppRoutes.onboarding1);
         }
       });
     });
@@ -465,3 +466,5 @@ class PowerMeterPainter extends CustomPainter {
     return oldDelegate.progress != progress;
   }
 }
+
+

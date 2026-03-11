@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui' as ui;
 import '../theme/app_colors.dart';
@@ -134,7 +135,7 @@ class MainDashboardScreen extends StatelessWidget {
                           label: 'Mins today',
                         ),
                         _buildSummaryCard(
-                          icon: Icons.footprint,
+                          icon: Icons.directions_walk,
                           iconColor: accentGreen,
                           badgeText: '-5%',
                           badgeColor: Colors.redAccent,
@@ -248,7 +249,7 @@ class MainDashboardScreen extends StatelessWidget {
                                 color: Colors.white.withOpacity(0.05),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(color: accentBlue.withOpacity(0.5)),
-                                filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                                
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -341,7 +342,7 @@ class MainDashboardScreen extends StatelessWidget {
                               const SizedBox(height: 24),
                               ElevatedButton(
                                 onPressed: () {
-                                  // context.push(AppRoutes.workoutSessionV2);
+                                  context.push(AppRoutes.workoutPlan);
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.primary,
@@ -459,3 +460,6 @@ class MainDashboardScreen extends StatelessWidget {
     );
   }
 }
+
+
+

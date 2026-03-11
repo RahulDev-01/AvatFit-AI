@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
@@ -154,7 +155,9 @@ class WorkoutPlanScreen extends StatelessWidget {
             left: 0, right: 0,
             child: Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push(AppRoutes.activeWorkout);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
@@ -316,3 +319,5 @@ class WorkoutPlanScreen extends StatelessWidget {
     );
   }
 }
+
+

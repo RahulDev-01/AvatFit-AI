@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui' as ui;
 import '../theme/app_colors.dart';
@@ -226,7 +227,7 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
                                   // Create Account Button
                                   ElevatedButton(
                                     onPressed: () {
-                                      // context.go(AppRoutes.profileSetup1);
+                                      context.go(AppRoutes.profileSetup1);
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: AppColors.primary,
@@ -340,3 +341,5 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
     );
   }
 }
+
+

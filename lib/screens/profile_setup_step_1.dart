@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
@@ -231,7 +232,7 @@ class _ProfileSetupStep1ScreenState extends State<ProfileSetupStep1Screen> {
               padding: const EdgeInsets.all(24.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // context.push(AppRoutes.profileSetupLevelPrefs);
+                  context.go(AppRoutes.profileSetupLevelPrefs);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
@@ -348,3 +349,5 @@ class _ProfileSetupStep1ScreenState extends State<ProfileSetupStep1Screen> {
     );
   }
 }
+
+

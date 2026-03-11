@@ -21,7 +21,8 @@ import '../screens/avatar_generation.dart';
 import '../screens/workout_history.dart';
 import '../screens/achievements_level.dart';
 import '../screens/fitmorph_premium.dart';
-// import '../screens/settings.dart';
+import '../screens/notifications.dart';
+import '../screens/settings.dart';
 
 class AppRoutes {
   static const String splash1 = '/';
@@ -71,7 +72,7 @@ class AppRoutes {
         builder: (context, state) => const WorkoutPlanScreen(),
       ),
       GoRoute(
-        path: activeWorkoutSession,
+        path: activeWorkout,
         builder: (context, state) => const ActiveWorkoutSessionScreen(),
       ),
       GoRoute(
@@ -95,8 +96,16 @@ class AppRoutes {
         builder: (context, state) => const AchievementsLevelScreen(),
       ),
       GoRoute(
-        path: fitmorphPremium,
+        path: premium,
         builder: (context, state) => const FitmorphPremiumScreen(),
+      ),
+      GoRoute(
+        path: notifications,
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        path: settings,
+        builder: (context, state) => const SettingsScreen(),
       ),
       GoRoute(path: splash2, builder: (context, state) => const SplashScreen2()),
       GoRoute(path: splash3, builder: (context, state) => const SplashScreen3()),

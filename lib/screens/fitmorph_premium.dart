@@ -105,7 +105,7 @@ class _FitmorphPremiumScreenState extends State<FitmorphPremiumScreen> {
                   ),
                   const SizedBox(height: 16),
                   _buildFeature(
-                    icon: Icons.monitoring,
+                    icon: Icons.show_chart,
                     title: 'Advanced Avatar Analytics',
                     desc: 'Visualize progress through your 3D digital twin',
                   ),
@@ -323,3 +323,4 @@ class _FitmorphPremiumScreenState extends State<FitmorphPremiumScreen> {
     );
   }
 }
+

@@ -54,6 +54,27 @@ class AppTextStyles {
     color: AppColors.textHighEmphasis,
   );
   
+  static final TextStyle titleMedium = GoogleFonts.lexend(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textHighEmphasis,
+    letterSpacing: 0.15,
+  );
+  
+  static final TextStyle titleSmall = GoogleFonts.lexend(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textHighEmphasis,
+    letterSpacing: 0.1,
+  );
+  
+  static final TextStyle labelMedium = GoogleFonts.lexend(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textHighEmphasis,
+    letterSpacing: 0.5,
+  );
+
   static final TextStyle labelSmall = GoogleFonts.lexend(
     fontSize: 11,
     fontWeight: FontWeight.w500,

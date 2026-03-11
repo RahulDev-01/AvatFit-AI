@@ -113,7 +113,7 @@ class DashboardV2Screen extends StatelessWidget {
                       const SizedBox(width: 12),
                       Expanded(
                         child: _buildStatCard(
-                          icon: Icons.footprint,
+                          icon: Icons.directions_walk,
                           iconColor: AppColors.primary,
                           label: 'STEPS',
                           value: '8,432',
@@ -445,3 +445,4 @@ class DashboardV2Screen extends StatelessWidget {
     );
   }
 }
+

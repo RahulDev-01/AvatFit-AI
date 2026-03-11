@@ -228,7 +228,7 @@ class AchievementsLevelScreen extends StatelessWidget {
           children: [
             _buildNavItem(icon: Icons.home, label: 'Home', isSelected: false),
             _buildNavItem(icon: Icons.fitness_center, label: 'Workouts', isSelected: false),
-            _buildNavItem(icon: Icons.monitoring, label: 'Progress', isSelected: false),
+            _buildNavItem(icon: Icons.show_chart, label: 'Progress', isSelected: false),
             _buildNavItem(icon: Icons.emoji_events, label: 'Awards', isSelected: true),
             _buildNavItem(icon: Icons.person, label: 'Profile', isSelected: false),
           ],
@@ -346,3 +346,4 @@ class AchievementsLevelScreen extends StatelessWidget {
     );
   }
 }
+

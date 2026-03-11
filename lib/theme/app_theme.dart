@@ -79,7 +79,7 @@ class AppTheme {
           borderSide: const BorderSide(color: AppColors.primary),
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.surface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),

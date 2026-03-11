@@ -299,3 +299,4 @@ class MuscleInteractionScreen extends StatelessWidget {
     );
   }
 }
+

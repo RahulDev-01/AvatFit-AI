@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
@@ -173,7 +174,7 @@ class _ProfileSetupBodyGoalsScreenState extends State<ProfileSetupBodyGoalsScree
               ),
               child: ElevatedButton(
                 onPressed: () {
-                  // context.go(AppRoutes.dashboard);
+                  context.go(AppRoutes.dashboard);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
@@ -323,3 +324,5 @@ class _ProfileSetupBodyGoalsScreenState extends State<ProfileSetupBodyGoalsScree
     );
   }
 }
+
+

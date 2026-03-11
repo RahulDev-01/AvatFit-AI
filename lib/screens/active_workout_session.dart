@@ -392,3 +392,4 @@ class ActiveWorkoutSessionScreen extends StatelessWidget {
     );
   }
 }
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui' as ui;
 import '../theme/app_colors.dart';
@@ -299,8 +300,7 @@ class OnboardingScreen3 extends StatelessWidget {
               child: Column(
                 children: [
                   ElevatedButton(
-                    // onPressed: () => context.go(AppRoutes.signUpLogin),
-                    onPressed: () {},
+                    onPressed: () => context.go(AppRoutes.signUpLogin),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primary,
                       foregroundColor: Colors.white,
@@ -359,3 +359,5 @@ class OnboardingScreen3 extends StatelessWidget {
     );
   }
 }
+
+
