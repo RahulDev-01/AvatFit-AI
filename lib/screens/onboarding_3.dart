@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
@@ -13,328 +14,317 @@ class OnboardingScreen3 extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: Column(
-          children: [
-            // Top App Bar
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 40, height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.03),
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white.withOpacity(0.08)),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.chevron_left, color: Colors.white),
-                      onPressed: () {
-                        if (context.canPop()) {
-                          context.pop();
-                        }
-                      },
-                    ),
-                  ),
-                  Text(
-                    'FitMorph',
-                    style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(width: 40), // spacer for balance
-                ],
-              ),
-            ),
-
-            // Page Indicators
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(width: 24, height: 6, decoration: BoxDecoration(color: const Color(0xFF334155), borderRadius: BorderRadius.circular(3))),
-                  const SizedBox(width: 12),
-                  Container(width: 24, height: 6, decoration: BoxDecoration(color: const Color(0xFF334155), borderRadius: BorderRadius.circular(3))),
-                  const SizedBox(width: 12),
-                  Container(
-                    width: 40, height: 6,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(3),
-                      boxShadow: [
-                        BoxShadow(color: AppColors.primary.withOpacity(0.5), blurRadius: 10),
-                      ]
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Hero Headline
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                children: [
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: AppTextStyles.headlineLarge.copyWith(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w800,
-                        height: 1.2,
-                        letterSpacing: -0.5,
-                      ),
-                      children: const [
-                        TextSpan(text: 'See Your Body\n'),
-                        TextSpan(
-                          text: 'Transform',
-                          style: TextStyle(color: AppColors.primary),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Visualize your future self with our AI morphing technology.',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textMuted),
-                  ),
-                ],
-              ),
-            ),
-
-            const Spacer(),
-
-            // Transformation Cards
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Row(
-                  children: [
-                    // Before Card
-                    Expanded(
-                      child: Container(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              children: [
+                // Top App Bar
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 40, height: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
                           color: Colors.white.withOpacity(0.03),
-                          border: Border.all(color: AppColors.primary.withOpacity(0.2)),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/Onboarding 3 - 0a6253832dec46ba9ed0c1f58dd63bff_0.png'), // Will need actual asset handling
-                            fit: BoxFit.cover,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white.withOpacity(0.08)),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.chevron_left, color: Colors.white),
+                          onPressed: () {
+                            if (context.canPop()) {
+                              context.pop();
+                            }
+                          },
+                        ),
+                      ),
+                      Text(
+                        'AvatFit AI',
+                        style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          context.go(AppRoutes.signUpLogin);
+                        },
+                        child: Text(
+                          'Skip',
+                          style: AppTextStyles.labelLarge.copyWith(
+                            color: AppColors.textMuted,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              bottom: 12, left: 12,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Text(
-                                  'BEFORE',
-                                  style: AppTextStyles.labelSmall.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 2.0,
-                                    color: const Color(0xFFCBD5E1),
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
-                    ),
+                    ],
+                  ),
+                ),
 
-                    // Connection icon mapping to HTML layout
-                    SizedBox(
-                      width: 48,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned(
-                            left: -12, // overlapping from right card into the gap
-                            child: Container(
-                              width: 48, height: 48,
-                              decoration: BoxDecoration(
-                                color: AppColors.primary,
-                                shape: BoxShape.circle,
-                                border: Border.all(color: AppColors.background, width: 4),
-                                boxShadow: const [
-                                  BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0, 5)),
-                                ]
-                              ),
-                              child: const Icon(Icons.double_arrow, color: Colors.white, size: 24),
-                            ),
+                // Page Indicators
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildDot(false),
+                      const SizedBox(width: 12),
+                      _buildDot(true),
+                    ],
+                  ),
+                ),
+
+                // Hero Headline
+                Column(
+                  children: [
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: AppTextStyles.headlineLarge.copyWith(
+                          fontSize: 36,
+                          fontWeight: FontWeight.w800,
+                          height: 1.2,
+                          letterSpacing: -0.5,
+                        ),
+                        children: const [
+                          TextSpan(text: 'See Your Body\n'),
+                          TextSpan(
+                            text: 'Transform',
+                            style: TextStyle(color: AppColors.primary),
                           ),
                         ],
                       ),
                     ),
-                    
-                    // Goal Card
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: Colors.white.withOpacity(0.03),
-                          border: Border.all(color: AppColors.primary.withOpacity(0.4)),
-                          boxShadow: [
-                            BoxShadow(color: AppColors.primary.withOpacity(0.1), blurRadius: 20, spreadRadius: 5),
-                          ],
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/Onboarding 3 - 0a6253832dec46ba9ed0c1f58dd63bff_1.png'), // Will need actual asset handling
-                            fit: BoxFit.cover,
+                    const SizedBox(height: 12),
+                    Text(
+                      'Visualize your future self with our AI morphing technology.',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textMuted),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 32),
+
+                // Transformation Cards
+                SizedBox(
+                  height: 200,
+                  child: Row(
+                    children: [
+                      // Before Card
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.0),
+                            color: Colors.white.withOpacity(0.03),
+                            border: Border.all(color: AppColors.primary.withOpacity(0.2)),
                           ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              bottom: 12, left: 12,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: AppColors.primary,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: const [
-                                    BoxShadow(color: Colors.black26, blurRadius: 5),
-                                  ]
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                  'assets/images/Onboarding 3 - 0a6253832dec46ba9ed0c1f58dd63bff.png',
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => 
+                                      Icon(Icons.person_outline, size: 64, color: AppColors.textMuted.withOpacity(0.2)),
                                 ),
-                                child: Text(
-                                  'GOAL',
-                                  style: AppTextStyles.labelSmall.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 2.0,
-                                    color: Colors.white,
-                                    fontSize: 10,
+                              ),
+                              Positioned(
+                                bottom: 12, left: 12,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black45,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    'BEFORE',
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.0,
+                                      color: Colors.white70,
+                                      fontSize: 10,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
+                      ),
+
+                      const SizedBox(width: 12),
+                      
+                      // Connection icon
+                      Container(
+                        width: 48, height: 48,
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: AppColors.background, width: 4),
+                        ),
+                        child: const Icon(Icons.double_arrow, color: Colors.white, size: 24),
+                      ),
+
+                      const SizedBox(width: 12),
+                      
+                      // Goal Card
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.0),
+                            color: Colors.white.withOpacity(0.05),
+                            border: Border.all(color: AppColors.primary.withOpacity(0.4)),
+                          ),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                  'assets/images/Onboarding 3 - 0a6253832dec46ba9ed0c1f58dd63bff.png',
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => 
+                                      Icon(Icons.person, size: 64, color: AppColors.primary.withOpacity(0.2)),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 12, left: 12,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    'GOAL',
+                                    style: AppTextStyles.labelSmall.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.0,
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 32),
+
+                // Glassmorphism Progress Feature Card
+                Container(
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.03),
+                    border: Border.all(color: Colors.white.withOpacity(0.08)),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 40, height: 40,
+                            decoration: BoxDecoration(
+                              color: AppColors.primary.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: const Icon(Icons.analytics, color: AppColors.primary),
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            'AI Morph Tracking',
+                            style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'Our advanced AI analyzes your current physique and generates a 90-day projection of your potential results based on your selected program.',
+                        style: AppTextStyles.bodySmall.copyWith(color: AppColors.textMuted, height: 1.5),
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 64, height: 24,
+                            child: Stack(
+                              children: [
+                                _buildUserAvatar('JD', 0),
+                                _buildUserAvatar('MK', 16),
+                                _buildUserAvatar('SL', 32),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '+12k others transformed',
+                            style: AppTextStyles.labelSmall.copyWith(color: const Color(0xFF64748B), fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 48),
+
+                // Footer / Action Area
+                Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => context.go(AppRoutes.signUpLogin),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: Colors.white,
+                        minimumSize: const Size(double.infinity, 56),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+                        elevation: 8,
+                        shadowColor: AppColors.primary.withOpacity(0.3),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Start Your Transformation', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                          const SizedBox(width: 8),
+                          const Icon(Icons.trending_up),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextButton(
+                      onPressed: () {
+                        context.go(AppRoutes.onboarding2);
+                      },
+                      child: Text(
+                        'Back to step 2',
+                        style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textMuted),
                       ),
                     ),
                   ],
                 ),
-              ),
+                const SizedBox(height: 32),
+              ],
             ),
-
-            const Spacer(),
-
-            // Glassmorphism Progress Feature Card
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16.0),
-                child: BackdropFilter(
-                  filter: ui.ImageFilter.blur(sigmaX: 12.0, sigmaY: 12.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.03),
-                      border: Border.all(color: Colors.white.withOpacity(0.08)),
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 40, height: 40,
-                              decoration: BoxDecoration(
-                                color: AppColors.primary.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: const Icon(Icons.analytics, color: AppColors.primary),
-                            ),
-                            const SizedBox(width: 12),
-                            Text(
-                              'AI Morph Tracking',
-                              style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          'Our advanced AI analyzes your current physique and generates a 90-day projection of your potential results based on your selected program.',
-                          style: AppTextStyles.bodySmall.copyWith(color: AppColors.textMuted, height: 1.5),
-                        ),
-                        const SizedBox(height: 16),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 64, // 3 avatars * 16px visible + overlapping
-                              child: Stack(
-                                children: [
-                                  _buildUserAvatar('JD', 0),
-                                  _buildUserAvatar('MK', 16),
-                                  _buildUserAvatar('SL', 32),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              '+12k others transformed',
-                              style: AppTextStyles.labelSmall.copyWith(color: const Color(0xFF64748B), fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 24),
-
-            // Footer / Action Area
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    onPressed: () => context.go(AppRoutes.signUpLogin),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primary,
-                      foregroundColor: Colors.white,
-                      minimumSize: const Size(double.infinity, 56),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-                      elevation: 8,
-                      shadowColor: AppColors.primary.withOpacity(0.3),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Start Your Transformation', style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
-                        const SizedBox(width: 8),
-                        const Icon(Icons.trending_up),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextButton(
-                    onPressed: () {
-                      if (context.canPop()) {
-                        context.pop();
-                      }
-                    },
-                    child: Text(
-                      'Back to step 2',
-                      style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textMuted, fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildDot(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: 6,
+      width: isActive ? 32 : 8,
+      decoration: BoxDecoration(
+        color: isActive ? AppColors.primary : const Color(0xFF334155),
+        borderRadius: BorderRadius.circular(3.0),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
@@ -28,9 +29,7 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
+        child: Stack(
             children: [
               // Background Decorations
               Positioned(
@@ -133,9 +132,7 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
                         offset: const Offset(0, -32), // Pulls panel up over image
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(24.0),
-                          child: BackdropFilter(
-                            filter: ui.ImageFilter.blur(sigmaX: 12.0, sigmaY: 12.0),
-                            child: Container(
+                          child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.03),
                                 border: Border.all(color: Colors.white.withOpacity(0.1)),
@@ -311,6 +308,10 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
                                               color: AppColors.primary,
                                               fontWeight: FontWeight.bold,
                                             ),
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                context.go(AppRoutes.dashboard);
+                                              },
                                           ),
                                         ],
                                       ),
@@ -328,7 +329,6 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
                               ),
                             ),
                           ),
-                        ),
                       ),
                     ),
                   ),
@@ -337,7 +337,6 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 }

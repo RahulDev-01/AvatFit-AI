@@ -20,7 +20,7 @@ class _SplashScreen1State extends State<SplashScreen1> with SingleTickerProvider
     super.initState();
     _progressController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 1500),
     );
     
     _progressAnimation = Tween<double>(begin: 0.0, end: 0.78).animate(
@@ -30,14 +30,24 @@ class _SplashScreen1State extends State<SplashScreen1> with SingleTickerProvider
       ),
     );
 
+    print('SplashScreen1: Starting animation');
     _progressController.forward().then((_) {
+      print('SplashScreen1: Animation complete');
       // Navigate to the next screen after the animation
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
-          // Navigate to next splash screen
+          print('SplashScreen1: Navigating to splash2');
           context.go(AppRoutes.splash2);
         }
       });
+    });
+
+    // Fallback timer
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) {
+        print('SplashScreen1: Fallback navigation triggered');
+        context.go(AppRoutes.splash2);
+      }
     });
   }
 
@@ -160,9 +170,6 @@ class _SplashScreen1State extends State<SplashScreen1> with SingleTickerProvider
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: const Color(0xFF0F172A).withOpacity(0.4),
-                                border: Border.all(
-                                  color: AppColors.primary.withOpacity(0.3),
-                                ),
                                 boxShadow: const [
                                   BoxShadow(
                                     color: Colors.black26,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:math' as math;
@@ -25,12 +24,12 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
     super.initState();
     _progressController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 1500),
     );
     
     _scanController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 2),
     )..repeat();
     
     _progressAnimation = Tween<double>(begin: 0.0, end: 0.78).animate(
@@ -47,12 +46,23 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
       ),
     );
 
+    print('SplashScreen2: Starting animation');
     _progressController.forward().then((_) {
+      print('SplashScreen2: Animation complete');
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
+          print('SplashScreen2: Navigating to splash3');
           context.go(AppRoutes.splash3);
         }
       });
+    });
+
+    // Fallback timer
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) {
+        print('SplashScreen2: Fallback navigation triggered');
+        context.go(AppRoutes.splash3);
+      }
     });
   }
 
@@ -137,7 +147,7 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
                   const SizedBox(height: 8),
                   Text(
                     'SYS_ACTIVE_01',
-                    style: GoogleFonts.robotoMono(
+                    style: TextStyle(
                       color: primaryCyan,
                       fontSize: 10,
                     ),
@@ -243,7 +253,7 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
                         builder: (context, child) {
                           return Text(
                             '${(_progressAnimation.value * 100).toInt()}%',
-                            style: GoogleFonts.robotoMono(
+                            style: TextStyle(
                               color: primaryCyan,
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -335,6 +345,7 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
                           border: Border.all(color: primaryCyan.withOpacity(0.1), style: BorderStyle.none),
                         ),
                         child: CustomPaint(
+                          size: const Size(320, 320),
                           painter: DashedRingPainter(color: primaryCyan.withOpacity(0.2), isDotted: false),
                         ),
                       ),
@@ -346,6 +357,7 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
                           border: Border.all(color: cyberGreen.withOpacity(0.05), style: BorderStyle.none),
                         ),
                         child: CustomPaint(
+                          size: const Size(360, 360),
                           painter: DashedRingPainter(color: cyberGreen.withOpacity(0.1), isDotted: true),
                         ),
                       ),
@@ -370,52 +382,53 @@ class _SplashScreen2State extends State<SplashScreen2> with TickerProviderStateM
                 ),
               ),
               child: ClipRRect(
-                child: BackdropFilter(
-                  filter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.dstATop),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              style: AppTextStyles.headlineMedium.copyWith(
-                                fontSize: 28,
-                                letterSpacing: -1.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            style: AppTextStyles.headlineMedium.copyWith(
+                              fontSize: 28,
+                              letterSpacing: -1.0,
+                            ),
+                            children: const [
+                              TextSpan(text: 'AVATFIT '),
+                              TextSpan(
+                                text: 'AI',
+                                style: TextStyle(color: primaryCyan),
                               ),
-                              children: const [
-                                TextSpan(text: 'AVATFIT '),
-                                TextSpan(
-                                  text: 'AI',
-                                  style: TextStyle(color: primaryCyan),
-                                ),
-                              ],
-                            ),
+                            ],
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'ENHANCE . EVOLVE . TRANSCEND',
-                            style: AppTextStyles.labelSmall.copyWith(
-                              color: AppColors.textMuted,
-                              letterSpacing: 2.5,
-                              fontSize: 10,
-                            ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'ENHANCE . EVOLVE . TRANSCEND',
+                          style: AppTextStyles.labelSmall.copyWith(
+                            color: AppColors.textMuted,
+                            letterSpacing: 2.5,
+                            fontSize: 10,
                           ),
-                        ],
-                      ),
-                      
-                      // Only show on larger screens in real app, but showing here for completion
-                      Text(
+                        ),
+                      ],
+                    ),
+                    
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
                         '// "Transform Your Body, One Workout at a Time"',
-                        style: GoogleFonts.robotoMono(
+                        textAlign: TextAlign.right,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
                           color: primaryCyan.withOpacity(0.6),
                           fontSize: 12,
                           fontStyle: FontStyle.italic,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -547,6 +560,7 @@ class HexagonLinesPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
+
 
 
 

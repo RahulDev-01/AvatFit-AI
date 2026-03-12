@@ -21,7 +21,7 @@ class _SplashScreen3State extends State<SplashScreen3> with SingleTickerProvider
     super.initState();
     _progressController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 1500),
     );
     
     _progressAnimation = Tween<double>(begin: 0.0, end: 0.78).animate(
@@ -31,12 +31,23 @@ class _SplashScreen3State extends State<SplashScreen3> with SingleTickerProvider
       ),
     );
 
+    print('SplashScreen3: Starting animation');
     _progressController.forward().then((_) {
+      print('SplashScreen3: Animation complete');
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
-          context.go(AppRoutes.onboarding1);
+          print('SplashScreen3: Navigating to onboarding2');
+          context.go(AppRoutes.onboarding2);
         }
       });
+    });
+
+    // Fallback timer
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) {
+        print('SplashScreen3: Fallback navigation triggered');
+        context.go(AppRoutes.onboarding2);
+      }
     });
   }
 
@@ -207,6 +218,7 @@ class _SplashScreen3State extends State<SplashScreen3> with SingleTickerProvider
                                 child: Transform.rotate(
                                   angle: -math.pi / 2, // -90 deg
                                   child: CustomPaint(
+                                    size: const Size(288, 288),
                                     painter: PowerMeterPainter(
                                       progress: _progressAnimation.value,
                                       baseColor: Colors.white.withOpacity(0.05),
